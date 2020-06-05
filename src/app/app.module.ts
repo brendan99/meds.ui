@@ -1,32 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule } from '@angular/core';
+
+import { Routes, RouterModule } from '@angular/router';
+
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
-  {
-    path: 'meds',
-    loadChildren: () =>
-      import('src/app/meds/meds-feature.module').then(
-        (m) => m.MedsFeatureModule
-      ),
-  },
-  {
-    path: 'growth',
-    loadChildren: './growth/growth-app.module#GrowthFeatureModule',
-  },
-  { path: '**', redirectTo: 'meds' },
+  { path: 'contactmanager', loadChildren: './contactmanager/contactmanager.module#ContactmanagerModule' },
+  { path: 'demo', loadChildren: './demo/demo.module#DemoModule' },
+  { path: '**', redirectTo: 'contactmanager' }
 ];
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes)
   ],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
