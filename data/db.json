@@ -1,0 +1,134 @@
+{
+  "doses": [
+    {
+      "id": 1,
+      "date": "1996-01-01T07:00:00.000Z",
+      "medication": {
+        "id": 1
+      },
+      "participant": { "id": 1 }
+    },
+    {
+      "id": 2,
+      "date": "1996-01-02T07:00:00.000Z",
+      "medication": {
+        "id": 2
+      },
+      "participant": { "id": 1 }
+    },
+    {
+      "id": 3,
+      "date": "1996-01-03T07:00:00.000Z",
+      "medication": {
+        "id": 3
+      },
+      "participant": { "id": 1 }
+    },
+    {
+      "id": 4,
+      "date": "1996-01-12T07:00:00.000Z",
+      "medication": {
+        "id": 1
+      }
+    },
+    {
+      "id": 5,
+      "date": "1995-12-31T07:00:00.000Z",
+      "medication": {
+        "id": 2
+      }
+    },
+    {
+      "id": 6,
+      "date": "1995-12-01T07:00:00.000Z",
+      "medication": {
+        "id": 3
+      }
+    }
+  ],
+  "medication": [
+    {
+      "id": 1,
+      "name": "AlfaCalcidol",
+      "description": "Calcium supplement"
+    },
+    {
+      "id": 2,
+      "name": "Magnesium",
+      "description": "A supplement"
+    },
+    {
+      "id": 3,
+      "name": "Potassium",
+      "description": "Another supplement"
+    }
+  ],
+  "participants": [
+    {
+      "id": 1,
+      "name": "Johnny Smith",
+      "gender": "male",
+      "dateofbirth": "2018-01-01T07:00:00.000Z",
+      "growthEntries": [
+        {
+          "id": 1,
+          "height": "610",
+          "weight": "1500",
+          "date": "2020-01-01T07:00:00.000Z"
+        },
+        {
+          "id": 2,
+          "height": "620",
+          "weight": "1600",
+          "date": "2020-02-01T07:00:00.000Z"
+        },
+        {
+          "id": 3,
+          "height": "630",
+          "weight": "1700",
+          "date": "2020-03-01T07:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Jenny Green",
+      "gender": "female",
+      "dateofbirth": "2018-02-01T07:00:00.000Z",
+      "growthEntries": [{ "id": 4 }, { "id": 5 }]
+    },
+    {
+      "id": 3,
+      "name": "Timmy Jones",
+      "gender": "male",
+      "dateofbirth": "2018-03-01T07:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "name": "Sally Smith",
+      "gender": "female",
+      "dateofbirth": "2018-04-01T07:00:00.000Z"
+    },
+    {
+      "id": 5,
+      "name": "Brendan Coen",
+      "dateOfBirth": "2020-05-21",
+      "gender": "male",
+      "privacy": true
+    },
+    {
+      "id": 6,
+      "name": "sdasad",
+      "dateOfBirth": "2020-05-30",
+      "gender": "male",
+      "privacy": true
+    },
+    {
+      "id": 7,
+      "name": "Mariana Coen",
+      "dateOfBirth": "2016-06-25",
+      "gender": "female",
+      "privacy": true
+    }
+  ]
+}

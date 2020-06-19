@@ -1,0 +1,34 @@
+<h2 mat-dialog-title>Add new participant</h2>
+<mat-dialog-content>
+  <div class="example-container">
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Height"
+        [formControl]="height"
+        [(ngModel)]="growthEntry.height"
+        required
+      />
+      <mat-error *ngIf="height.invalid">{{ getErrorMessage() }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        placeholder="Date"
+        [(ngModel)]="growthEntry.date"
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button color="primary" (click)="save()">
+    <mat-icon>save</mat-icon> Save
+  </button>
+  <button mat-button color="primary" (click)="dismiss()">
+    <mat-icon>cancel</mat-icon> Cancel
+  </button>
+</mat-dialog-actions>

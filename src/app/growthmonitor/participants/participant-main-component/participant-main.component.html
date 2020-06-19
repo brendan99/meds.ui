@@ -9,7 +9,7 @@
         <h2>{{ participant.name }}</h2>
       </mat-card-title>
       <mat-card-subtitle>
-        Birthday: {{ participant.birthDate | date: "dd MMM yyyy" }}
+        Birthday: {{ participant.dateofbirth | date: "dd MMM yyyy" }}
       </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
@@ -19,8 +19,10 @@
             {{ participant.bio }}
           </p>
         </mat-tab>
-        <mat-tab label="Notes">
-          <app-notes [notes]="participant.notes"></app-notes>
+        <mat-tab label="Growth Entries">
+          <app-growth-entries
+            [growthEntries]="participant.growthEntries"
+          ></app-growth-entries>
         </mat-tab>
       </mat-tab-group>
     </mat-card-content>

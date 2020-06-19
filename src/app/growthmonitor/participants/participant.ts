@@ -1,11 +1,9 @@
-import { Note } from "../notes/note";
+import { GrowthEntry } from "../growthEntries/growthentry";
 
 export class Participant {
   id: number;
-  birthDate: Date;
+  dateofbirth: Date;
   name: string;
-  avatar: string;
   bio: string;
-
-  notes: Note[] = [];
+  growthEntries: GrowthEntry[] = [];
 }

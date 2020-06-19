@@ -11,7 +11,6 @@ const routes: Routes = [
     path: "growthmonitor",
     loadChildren: "./growthmonitor/growthmonitor.module#GrowthMonitorModule",
   },
-  { path: "demo", loadChildren: "./demo/demo.module#DemoModule" },
   { path: "**", redirectTo: "growthmonitor" },
 ];
 

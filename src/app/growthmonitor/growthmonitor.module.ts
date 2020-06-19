@@ -7,20 +7,22 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { GrowthMonitorAppComponent } from "./growthmonitor-app.component";
-import { MainContentComponent } from "./main-content/main-content.component";
+// import { GrowthEntryService } from "./growthentries/growthentry.service";
 import { ParticipantService } from "./participants/participant.service";
 import { ToolbarComponent } from "./toolbar/toolbar.component";
-import { SidenavComponent } from "./sidenav/sidenav.component";
 import { NewParticipantDialogComponent } from "./participants/new-participant-dialog/new-participant-dialog.component";
-import { NotesComponent } from "./notes/notes.component";
+import { GrowthEntriesComponent } from "./growthEntries/growth-entries-component/growthEntries.component";
+import { ParticipantMainComponent } from "./participants/participant-main-component/participant-main.component";
+import { ParticipantListComponent } from "./participants/participant-list/participant-list.component";
+// import { NewGrowthEntryDialogComponent } from "./growthEntries/new-entry-dialog/new-entry-dialog.component";
 
 const routes: Routes = [
   {
     path: "",
     component: GrowthMonitorAppComponent,
     children: [
-      { path: ":id", component: MainContentComponent },
-      { path: "", component: MainContentComponent },
+      { path: ":id", component: ParticipantListComponent },
+      { path: "", component: ParticipantListComponent },
     ],
   },
   { path: "**", redirectTo: "" },
@@ -40,11 +42,15 @@ const routes: Routes = [
   declarations: [
     GrowthMonitorAppComponent,
     ToolbarComponent,
-    MainContentComponent,
-    SidenavComponent,
-    NotesComponent,
+    ParticipantMainComponent,
+    GrowthEntriesComponent,
     NewParticipantDialogComponent,
+    ParticipantListComponent,
+    // NewGrowthEntryDialogComponent,
   ],
-  entryComponents: [NewParticipantDialogComponent],
+  entryComponents: [
+    NewParticipantDialogComponent,
+    // NewGrowthEntryDialogComponent,
+  ],
 })
 export class GrowthMonitorModule {}

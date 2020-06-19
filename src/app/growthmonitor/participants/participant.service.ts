@@ -36,8 +36,7 @@ export class ParticipantService {
   }
 
   loadAll() {
-    const participantsUrl =
-      "https://angular-material-api.azurewebsites.net/users";
+    const participantsUrl = "http://localhost:3000/api/participants";
 
     return this.http.get<Participant[]>(participantsUrl).subscribe(
       (data) => {

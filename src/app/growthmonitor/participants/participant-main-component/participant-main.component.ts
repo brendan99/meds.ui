@@ -1,14 +1,14 @@
 import { Component, OnInit } from "@angular/core";
-import { Participant } from "../participants/participant";
+import { Participant } from "../participant";
 import { ActivatedRoute } from "@angular/router";
-import { ParticipantService } from "../participants/participant.service";
+import { ParticipantService } from "../participant.service";
 
 @Component({
-  selector: "app-main-content",
-  templateUrl: "./main-content.component.html",
-  styleUrls: ["./main-content.component.scss"],
+  selector: "app-participant-main",
+  templateUrl: "./participant-main.component.html",
+  styleUrls: ["./participant-main.component.scss"],
 })
-export class MainContentComponent implements OnInit {
+export class ParticipantMainComponent implements OnInit {
   participant: Participant;
   constructor(
     private route: ActivatedRoute,
@@ -30,7 +30,6 @@ export class MainContentComponent implements OnInit {
 
         setTimeout(() => {
           this.participant = this.ParticipantSvc.participantById(id);
-          console.log(this.participant.id);
         }, 500);
       });
     });
