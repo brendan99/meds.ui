@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { MatDialogRef } from "@angular/material";
-import { GrowthEntry } from "../growthentry";
+import { IGrowthEntry } from "../../models/growthentry.model";
 import { FormControl, Validators } from "@angular/forms";
 // import { GrowthEntryService } from "../growthentry.service";
 
@@ -10,11 +10,10 @@ import { FormControl, Validators } from "@angular/forms";
   styleUrls: ["./new-entry-dialog.component.scss"],
 })
 export class NewGrowthEntryDialogComponent implements OnInit {
-  growthEntry: GrowthEntry;
+  growthEntry: IGrowthEntry;
   constructor(
-    private dialogRef: MatDialogRef<NewGrowthEntryDialogComponent>
-  ) //  private GrowthEntrySvc: GrowthEntryService
-  {}
+    private dialogRef: MatDialogRef<NewGrowthEntryDialogComponent> //  private GrowthEntrySvc: GrowthEntryService
+  ) {}
 
   height = new FormControl("", [Validators.required]);
 
@@ -23,7 +22,7 @@ export class NewGrowthEntryDialogComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.growthEntry = new GrowthEntry();
+    // this.growthEntry = new IGrowthEntry();
   }
 
   save() {

@@ -5,10 +5,10 @@
     <mat-nav-list>
       <a
         mat-list-item
-        *ngFor="let participant of participants | async"
+        *ngFor="let participant of participants"
         matLine
-        [routerLink]="['/growthmonitor', participant.id]"
-        ><mat-icon matListIcon>enter</mat-icon>
+        [routerLink]="['/growthmonitor/participants', participant.id]"
+      >
         {{ participant.name }}
       </a>
     </mat-nav-list>

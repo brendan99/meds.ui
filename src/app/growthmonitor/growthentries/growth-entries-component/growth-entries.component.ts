@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChild } from "@angular/core";
-import { GrowthEntry } from "../growthentry";
+import { IGrowthEntry } from "../../models/growthentry.model";
 import { Router } from "@angular/router";
 import {
   MatDialog,
@@ -10,18 +10,18 @@ import {
   MatPaginator,
   MatSort,
 } from "@angular/material";
-import { NewGrowthEntryDialogComponent } from "../new-entry-dialog/new-entry-dialog.component";
+import { NewGrowthEntryDialogComponent } from "../create-entry-component/new-entry-dialog.component";
 
 @Component({
   selector: "app-growth-entries",
-  templateUrl: "./growthentries.component.html",
-  styleUrls: ["./growthentries.component.scss"],
+  templateUrl: "./growth-entries.component.html",
+  styleUrls: ["./growth-entries.component.scss"],
 })
 export class GrowthEntriesComponent implements OnInit {
-  @Input() growthEntries: GrowthEntry[];
+  @Input() growthEntries: IGrowthEntry[];
 
-  displayedColumns = ["height", "weight", "date"];
-  dataSource: MatTableDataSource<GrowthEntry>;
+  displayedColumns = ["date", "height", "weight"];
+  dataSource: MatTableDataSource<IGrowthEntry>;
 
   constructor(
     private dialog: MatDialog,
@@ -38,7 +38,7 @@ export class GrowthEntriesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dataSource = new MatTableDataSource<GrowthEntry>(this.growthEntries);
+    this.dataSource = new MatTableDataSource<IGrowthEntry>(this.growthEntries);
   }
 
   applyFilter(filterValue: string) {
@@ -59,7 +59,7 @@ export class GrowthEntriesComponent implements OnInit {
         this.openSnackBar("Entry added", "Navigate")
           .onAction()
           .subscribe(() => {
-            this.router.navigate(["/growthmonitor", result.id]);
+            this.router.navigate(["/growthmonitor/participants", result.id]);
           });
       }
     });

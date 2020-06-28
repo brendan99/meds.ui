@@ -7,25 +7,34 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { GrowthMonitorAppComponent } from "./growthmonitor-app.component";
-// import { GrowthEntryService } from "./growthentries/growthentry.service";
 import { ParticipantService } from "./participants/participant.service";
 import { ToolbarComponent } from "./toolbar/toolbar.component";
-import { NewParticipantDialogComponent } from "./participants/new-participant-dialog/new-participant-dialog.component";
-import { GrowthEntriesComponent } from "./growthEntries/growth-entries-component/growthEntries.component";
-import { ParticipantMainComponent } from "./participants/participant-main-component/participant-main.component";
-import { ParticipantListComponent } from "./participants/participant-list/participant-list.component";
-// import { NewGrowthEntryDialogComponent } from "./growthEntries/new-entry-dialog/new-entry-dialog.component";
+import { NewParticipantComponent } from "./participants/new-participant-dialog/new-participantcomponent";
+import { GrowthEntriesComponent } from "./growthentries/growth-entries-component/growth-entries.component";
+import { ParticipantDetailComponent } from "./participants/participant-detail/participant-detail.component";
+import { ParticipantListComponent } from "./participants/participants-list/participant-list.component";
+import { ParticipantListResolver } from "./participants/participants-list-resolver.service";
+import { ParticipantResolver } from "./participants/participant-resolver.service";
 
 const routes: Routes = [
+  // {
+  //   path: "participants/new",
+  //   component: NewParticipantDialogComponent,
+  //   canDeactivate: ["canDeactivateCreateParticipant"],
+  // },
   {
-    path: "",
+    path: "participants",
     component: GrowthMonitorAppComponent,
-    children: [
-      { path: ":id", component: ParticipantListComponent },
-      { path: "", component: ParticipantListComponent },
-    ],
+    resolve: { participants: ParticipantListResolver },
   },
-  { path: "**", redirectTo: "" },
+  {
+    path: "participants/:id",
+    component: ParticipantDetailComponent,
+    resolve: { participant: ParticipantResolver },
+  },
+  // { path: '404', component: Error404Component },
+  { path: "", redirectTo: "/growthmonitor/participants", pathMatch: "full" },
+  // { path: "user", loadChildren: "./user/user.module#UserModule" },
 ];
 
 @NgModule({
@@ -38,19 +47,15 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forChild(routes),
   ],
-  providers: [ParticipantService],
+  providers: [ParticipantService, ParticipantListResolver, ParticipantResolver],
   declarations: [
     GrowthMonitorAppComponent,
-    ToolbarComponent,
-    ParticipantMainComponent,
+    ParticipantDetailComponent,
     GrowthEntriesComponent,
-    NewParticipantDialogComponent,
+    NewParticipantComponent,
     ParticipantListComponent,
-    // NewGrowthEntryDialogComponent,
+    ToolbarComponent,
   ],
-  entryComponents: [
-    NewParticipantDialogComponent,
-    // NewGrowthEntryDialogComponent,
-  ],
+  entryComponents: [NewParticipantComponent],
 })
 export class GrowthMonitorModule {}

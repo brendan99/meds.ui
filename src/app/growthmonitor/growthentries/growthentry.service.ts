@@ -2,27 +2,26 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { BehaviorSubject } from "rxjs/BehaviorSubject";
 import { Observable } from "rxjs/Observable";
-import { resolve } from "q";
-import { GrowthEntry } from "./growthentry";
+import { IGrowthEntry } from "../models/growthentry.model";
 
 @Injectable()
 export class GrowthEntryService {
-  private _growthEntries: BehaviorSubject<GrowthEntry[]>;
+  private _growthEntries: BehaviorSubject<IGrowthEntry[]>;
 
   private dataStore: {
-    growthEntries: GrowthEntry[];
+    growthEntries: IGrowthEntry[];
   };
 
   constructor(private http: HttpClient) {
     this.dataStore = { growthEntries: [] };
-    this._growthEntries = new BehaviorSubject<GrowthEntry[]>([]);
+    this._growthEntries = new BehaviorSubject<IGrowthEntry[]>([]);
   }
 
-  get growthEntries(): Observable<GrowthEntry[]> {
+  get growthEntries(): Observable<IGrowthEntry[]> {
     return this._growthEntries.asObservable();
   }
 
-  addGrowthEntry(growthEntry: GrowthEntry): Promise<GrowthEntry> {
+  addGrowthEntry(growthEntry: IGrowthEntry): Promise<IGrowthEntry> {
     return new Promise((resolver, reject) => {
       growthEntry.id = this.dataStore.growthEntries.length + 1;
       this.dataStore.growthEntries.push(growthEntry);
@@ -38,7 +37,7 @@ export class GrowthEntryService {
   loadAll() {
     const growthEntriesUrl = "http://localhost:3000/api/growthEntries";
 
-    return this.http.get<GrowthEntry[]>(growthEntriesUrl).subscribe(
+    return this.http.get<IGrowthEntry[]>(growthEntriesUrl).subscribe(
       (data) => {
         this.dataStore.growthEntries = data;
         this._growthEntries.next(

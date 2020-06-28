@@ -1,51 +1,53 @@
 import { Injectable } from "@angular/core";
-import { Participant } from "./participant";
-import { HttpClient } from "@angular/common/http";
-import { BehaviorSubject } from "rxjs/BehaviorSubject";
+import { IParticipant } from "../models/participant.model";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs/Observable";
-import { resolve } from "q";
+import { catchError, tap } from "rxjs/operators";
+import { IGrowthEntry } from "../models/growthentry.model";
+import { of } from "rxjs/observable/of";
 
 @Injectable()
 export class ParticipantService {
-  private _participants: BehaviorSubject<Participant[]>;
+  participantsApi = "http://localhost:3000/api/participants";
 
-  private dataStore: {
-    participants: Participant[];
-  };
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) {
-    this.dataStore = { participants: [] };
-    this._participants = new BehaviorSubject<Participant[]>([]);
+  getParticipants(): Observable<IParticipant[]> {
+    return this.http
+      .get<IParticipant[]>(this.participantsApi)
+      .pipe(
+        catchError(this.handleError<IParticipant[]>("getParticipants", []))
+      );
   }
 
-  get participants(): Observable<Participant[]> {
-    return this._participants.asObservable();
-  }
-
-  addParticipant(participant: Participant): Promise<Participant> {
-    return new Promise((resolver, reject) => {
-      participant.id = this.dataStore.participants.length + 1;
-      this.dataStore.participants.push(participant);
-      this._participants.next(Object.assign({}, this.dataStore).participants);
-      resolver(participant);
-    });
-  }
-
-  participantById(id: number) {
-    return this.dataStore.participants.find((x) => x.id === id);
-  }
-
-  loadAll() {
-    const participantsUrl = "http://localhost:3000/api/participants";
-
-    return this.http.get<Participant[]>(participantsUrl).subscribe(
-      (data) => {
-        this.dataStore.participants = data;
-        this._participants.next(Object.assign({}, this.dataStore).participants);
-      },
-      (error) => {
-        console.log("Failed to fetch participants");
-      }
+  getParticipant(id: number): Observable<IParticipant> {
+    return this.http.get<IParticipant>(this.participantsApi + "/" + id).pipe(
+      tap((data) => console.log(data)),
+      catchError(this.handleError<IParticipant>("getParticipantById"))
     );
+  }
+
+  saveParticipant(participant) {
+    const options = {
+      headers: new HttpHeaders({ "Content-Type": "application/json" }),
+    };
+    return this.http
+      .post<IParticipant>(this.participantsApi, participant, options)
+      .pipe(catchError(this.handleError<IParticipant>("saveParticipant")));
+  }
+
+  searchGrowthEntry(searchTerm: string): Observable<IGrowthEntry[]> {
+    return this.http
+      .get<IGrowthEntry[]>("/api/growthentries/search?search=" + searchTerm)
+      .pipe(
+        catchError(this.handleError<IGrowthEntry[]>("searchGrowthEntries"))
+      );
+  }
+
+  private handleError<T>(operation = "operation", result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error);
+      return of(result as T);
+    };
   }
 }

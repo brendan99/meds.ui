@@ -67,6 +67,7 @@
     {
       "id": 1,
       "name": "Johnny Smith",
+      "bio": "He's a good boy",
       "gender": "male",
       "dateofbirth": "2018-01-01T07:00:00.000Z",
       "growthEntries": [
@@ -93,9 +94,29 @@
     {
       "id": 2,
       "name": "Jenny Green",
+      "bio": "She's a girl",
       "gender": "female",
       "dateofbirth": "2018-02-01T07:00:00.000Z",
-      "growthEntries": [{ "id": 4 }, { "id": 5 }]
+      "growthEntries": [
+        {
+          "id": 1,
+          "height": "500",
+          "weight": "1000",
+          "date": "2020-01-01T07:00:00.000Z"
+        },
+        {
+          "id": 2,
+          "height": "510",
+          "weight": "1100",
+          "date": "2020-02-01T07:00:00.000Z"
+        },
+        {
+          "id": 3,
+          "height": "520",
+          "weight": "1200",
+          "date": "2020-03-01T07:00:00.000Z"
+        }
+      ]
     },
     {
       "id": 3,

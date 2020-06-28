@@ -4,7 +4,6 @@
 <div *ngIf="participant">
   <mat-card>
     <mat-card-header>
-      <!-- <mat-icon mat-card-avatar svgIcon="{{ participant.avatar }}"></mat-icon> -->
       <mat-card-title>
         <h2>{{ participant.name }}</h2>
       </mat-card-title>
@@ -14,15 +13,15 @@
     </mat-card-header>
     <mat-card-content>
       <mat-tab-group>
-        <mat-tab label="Bio">
-          <p>
-            {{ participant.bio }}
-          </p>
-        </mat-tab>
         <mat-tab label="Growth Entries">
           <app-growth-entries
             [growthEntries]="participant.growthEntries"
           ></app-growth-entries>
+        </mat-tab>
+        <mat-tab label="Notes">
+          <p>
+            {{ participant.bio }}
+          </p>
         </mat-tab>
       </mat-tab-group>
     </mat-card-content>

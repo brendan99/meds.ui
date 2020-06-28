@@ -6,7 +6,7 @@ import {
   SimpleSnackBar,
 } from "@angular/material";
 import { Router } from "@angular/router";
-import { NewParticipantDialogComponent } from "../participants/new-participant-dialog/new-participant-dialog.component";
+import { NewParticipantComponent } from "../participants/new-participant-dialog/new-participantcomponent";
 
 @Component({
   selector: "app-toolbar",
@@ -27,7 +27,7 @@ export class ToolbarComponent implements OnInit {
   ngOnInit() {}
 
   openAddParticipantDialog(): void {
-    const dialogRef = this.dialog.open(NewParticipantDialogComponent, {
+    const dialogRef = this.dialog.open(NewParticipantComponent, {
       width: "450px",
     });
 

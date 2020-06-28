@@ -2,18 +2,6 @@
 <mat-dialog-content>
   <div class="example-container">
     <mat-form-field>
-      <mat-select placeholder="Avatar" [(ngModel)]="participant.avatar">
-        <mat-select-trigger>
-          <mat-icon svgIcon="{{ participant.avatar }}"></mat-icon>
-          {{ participant.avatar }}
-        </mat-select-trigger>
-        <mat-option *ngFor="let avatar of avatars" [value]="avatar">
-          <mat-icon svgIcon="{{ avatar }}"></mat-icon> {{ avatar }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field>
       <input
         matInput
         placeholder="Name"
@@ -38,7 +26,7 @@
     <mat-form-field>
       <textarea
         matInput
-        placeholder="Bio"
+        placeholder="Notes"
         [(ngModel)]="participant.bio"
       ></textarea>
     </mat-form-field>
