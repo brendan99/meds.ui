@@ -10,7 +10,7 @@ import {
   MatPaginator,
   MatSort,
 } from "@angular/material";
-import { NewGrowthEntryDialogComponent } from "../create-entry-component/new-entry-dialog.component";
+import { NewGrowthEntryDialogComponent } from "../new-entry/new-entry.component";
 
 @Component({
   selector: "app-growth-entries",

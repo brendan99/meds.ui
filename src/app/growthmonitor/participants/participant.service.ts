@@ -20,6 +20,12 @@ export class ParticipantService {
       );
   }
 
+  getParticipantWithEntries(participantId: number): Observable<IParticipant>{
+    return this.http.get<IParticipant>(this.participantsApi + "/" + participantId + "/entries")
+    .pipe(tap((data) => console.log(data)),
+    catchError(this.handleError<IParticipant>("getParticipantWithEntries")));
+  }
+
   getParticipant(id: number): Observable<IParticipant> {
     return this.http.get<IParticipant>(this.participantsApi + "/" + id).pipe(
       tap((data) => console.log(data)),

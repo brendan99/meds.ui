@@ -6,7 +6,7 @@ import {
   SimpleSnackBar,
 } from "@angular/material";
 import { Router } from "@angular/router";
-import { NewParticipantComponent } from "../participants/new-participant-dialog/new-participantcomponent";
+import { NewParticipantComponent } from "../participants/new-participant/new-participantcomponent";
 
 @Component({
   selector: "app-toolbar",
