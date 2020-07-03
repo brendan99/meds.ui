@@ -5,9 +5,9 @@ import { FormControl, Validators } from "@angular/forms";
 // import { GrowthEntryService } from "../growthentry.service";
 
 @Component({
-  selector: "app-new-entry-dialog",
-  templateUrl: "./new-entry-dialog.component.html",
-  styleUrls: ["./new-entry-dialog.component.scss"],
+  selector: "app-new-entry",
+  templateUrl: "./new-entry.component.html",
+  styleUrls: ["./new-entry.component.scss"],
 })
 export class NewGrowthEntryDialogComponent implements OnInit {
   growthEntry: IGrowthEntry;

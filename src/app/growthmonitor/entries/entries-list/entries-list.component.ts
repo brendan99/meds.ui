@@ -14,8 +14,8 @@ import { NewGrowthEntryDialogComponent } from "../new-entry/new-entry.component"
 
 @Component({
   selector: "app-growth-entries",
-  templateUrl: "./growth-entries.component.html",
-  styleUrls: ["./growth-entries.component.scss"],
+  templateUrl: "./entries-list.component.html",
+  styleUrls: ["./entries-list.component.scss"],
 })
 export class GrowthEntriesComponent implements OnInit {
   @Input() growthEntries: IGrowthEntry[];
